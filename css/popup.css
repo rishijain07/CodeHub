@@ -1,0 +1,26 @@
+body {
+    width: 400px;
+    background-color: #ffffff !important;
+    padding: 10px;
+    text-align: center;
+    transition: background-color 0.75s ease;
+    font-size: 13px;
+  
+    font-family: 'Helvetica Neue', 'Lucida Grande', sans-serif;
+};
+
+.social-icons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icon {
+  flex: 0 0 auto;
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  opacity: 0.7;
+}
