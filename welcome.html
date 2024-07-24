@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeHub</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/welcome.css" />
+  </head>
+
+  <body class="bg-dark text-light">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-12">
+          <br />
+          <h1 class="display-1 ">
+            <span class="text-primary">Code</span>Hub
+          </h1>
+          <p class="lead">
+            Automatically sync your code from various platform to GitHub
+          </p>
+          <br /><br /><br /><br /><br /><br /><br /><br />
+          <p id="error" class="d-none"></p>
+          <p id="success" class="d-none"></p>
+          <p id="unlink" class="d-none">
+            Linked the wrong repo? <a href="#" class="text-warning">Unlink</a>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Create Hook -->
+      <div id="hook_mode" class="row d-none">
+        <div class="col-md-6">
+          <h2 class="text-center">To get started with CodeHub</h2>
+        </div>
+        <div class="col-md-3">
+          <select id="type" class="form-select">
+            <option value="">Pick an Option</option>
+            <option value="new">Create a new Private Repository</option>
+            <option value="link">Link an Existing Repository</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <input
+            autocomplete="off"
+            id="name"
+            placeholder="Repository Name"
+            type="text"
+            class="form-control"
+          />
+        </div>
+        <div class="col-12 text-end mt-3">
+          <button
+            id="hook_button"
+            disabled
+            class="btn btn-success"
+          >
+            Get Started
+          </button>
+        </div>
+      </div>
+
+      <!-- Show stats -->
+      <div id="commit_mode" class="row d-none mt-5">
+        <div class="col-md-6 text-center">
+          <h2 class="display-6">
+            Problems Solved: <span id="p_solved">0</span>
+          </h2>
+          <h3>
+            <span class="text-success">Easy: <span id="p_solved_easy">0</span></span>
+            <span class="text-warning">Medium: <span id="p_solved_medium">0</span></span>
+            <span class="text-danger">Hard: <span id="p_solved_hard">0</span></span>
+          </h3>
+        </div>
+        <div class="col-md-6 text-center">
+          <h3>Want more features?</h3>
+          
+            <a class="text-info"
+            target="_blank"
+            href="https://github.com/"
+          >Request a feature!</a>
+        </div>
+      </div>
+
+      <!-- Rate on GitHub -->
+      <div class="row mt-5">
+        <div class="col-12 text-end">
+          <h6>
+              <a class="text-info"
+              target="_blank"
+              href="https://github.com/"
+            >Star <span class="text-light">Leet</span><span class="text-warning">Hub</span> on GitHub</a>
+          </h6>
+        </div>
+      </div>
+    </div>
+
+    <script src="scripts/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="scripts/welcome.js"></script>
+  </body>
+</html>

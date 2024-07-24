@@ -16,9 +16,7 @@
       <div class="col-12 text-center">
         <h1 id="title"><span class="text-primary">Code</span></span>Hub</h1>
         <p id="caption">Sync your code Code to GitHub</p>
-        <br />
-
-
+        
         <!-- Authentication with GitHub -->
         <div id="auth" class="d-none">
           <p class="onboarding">
@@ -33,7 +31,14 @@
             Authenticate
           </button>
         </div>
-  
+
+        <div id="device_code_mode" class="d-none">
+          <p>Please visit <a id="verification_uri" target="_blank"></a> and enter the code:</p>
+          <p><strong id="user_code"></strong></p>
+          <button id="proceed_to_verification" class="btn btn-success btn-sm">Proceed to Verification</button>
+        </div>
+
+
         <!-- Repo Hook mode -->
         <div id="hook_mode" class="d-none" >
           <p class="onboarding">
@@ -82,6 +87,16 @@
               style="text-decoration:none;"
               >Request a new feature!</a
             >
+            | 
+            <a
+              id="welcome_URL"
+              class="text-info"
+              target="_blank"
+              href=""
+              style="text-decoration:none;"
+              >See Stats</a
+            >
+
           </div>
         </div>
       </div>
@@ -115,9 +130,9 @@
 
     </div>
   </div>
-
-
-    <script src="scripts/bootstrap.bundle.min.js"></script>
+  <script src="scripts/oauth.js"></script>
+  <script type="text/javascript" src="scripts/popup.js"></script>
+    <script    src="scripts/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
