@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodeHub</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/welcome.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
   </head>
 
-  <body class="bg-dark text-light">
+  <body class="text-light">
     <div class="container">
       <div class="row text-center">
         <div class="col-12">
@@ -19,7 +20,7 @@
           <p class="lead">
             Automatically sync your code from various platform to GitHub
           </p>
-          <br /><br /><br /><br /><br /><br /><br /><br />
+          <br /><br />
           <p id="error" class="d-none"></p>
           <p id="success" class="d-none"></p>
           <p id="unlink" class="d-none">
@@ -29,7 +30,7 @@
       </div>
 
       <!-- Create Hook -->
-      <div id="hook_mode" class="row d-none">
+      <div id="hook_mode" class="row ">
         <div class="col-md-6">
           <h2 class="text-center">To get started with CodeHub</h2>
         </div>
@@ -61,41 +62,57 @@
       </div>
 
       <!-- Show stats -->
-      <div id="commit_mode" class="row d-none mt-5">
-        <div class="col-md-6 text-center">
-          <h2 class="display-6">
-            Problems Solved: <span id="p_solved">0</span>
-          </h2>
-          <h3>
+      <div id="commit_mode" class="row d-none mt-5" style="margin-top: 20px; margin-bottom: 50px;">
+        <div class="col-12 text-center" style="margin-bottom: 75px;">
+            <h2>
+                Problems Solved: <span id="p_solved">0</span>
+            </h2>
+
+        </div>
+        <div class="col-md-4 text-center">
+          <h3 >
+            Leetcode : <span id="leetcode_solved">0</span>
+          </h3>
+          <h4>
             <span class="text-success">Easy: <span id="p_solved_easy">0</span></span>
             <span class="text-warning">Medium: <span id="p_solved_medium">0</span></span>
             <span class="text-danger">Hard: <span id="p_solved_hard">0</span></span>
-          </h3>
+          </h4>
         </div>
-        <div class="col-md-6 text-center">
-          <h3>Want more features?</h3>
-          
-            <a class="text-info"
-            target="_blank"
-            href="https://github.com/"
-          >Request a feature!</a>
+        <div class="col-md-4 text-center">
+            <h3>Geeksforgeeks: <span id="gfg_solved">0</span></h3>
         </div>
+        <div class="col-md-4 text-center">
+            <h3>Codeforce: <span id="cf_solved">0</span></h3>
+        </div>
+       
       </div>
+
+
 
       <!-- Rate on GitHub -->
-      <div class="row mt-5">
-        <div class="col-12 text-end">
-          <h6>
-              <a class="text-info"
-              target="_blank"
-              href="https://github.com/"
-            >Star <span class="text-light">Leet</span><span class="text-warning">Hub</span> on GitHub</a>
-          </h6>
+      <footer class="mt-auto py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-start">
+                    <a href="https://github.com/" class="text-light text-decoration-none" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                        </svg>
+                        Star <span class="text-primary">Code</span><span class="text-light">Hub</span> on GitHub
+                    </a>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="https://github.com/" class="text-info text-decoration-none" target="_blank">
+                        Request a feature!
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-
+    </footer>
+  
+    
     <script src="scripts/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="scripts/welcome.js"></script>
+    <script type="module" src="scripts/welcome.js"></script>
   </body>
 </html>

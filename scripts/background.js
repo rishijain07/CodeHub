@@ -19,8 +19,10 @@ api.runtime.onInstalled.addListener(details => {
 api.runtime.onMessage.addListener(handleMessage);
 
 function handleMessage(request, sender, sendResponse) {
-  if (request.type === 'auth_success') {
+  if (request.auth) {
     console.log('Authentication successful:', request.token);
+    api.storage.local.set({codehub_token: request.token})
+    api.storage.local.set({codehub_username: request.username})
     api.storage.local.remove('device_code_data');
     const urlOnboarding = api.runtime.getURL('welcome.html');
     api.tabs.create({ url: urlOnboarding, active: true });

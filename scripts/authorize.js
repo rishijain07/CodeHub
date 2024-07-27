@@ -24,7 +24,7 @@ const localauth = {
         api.tabs.remove(tab.id, function() {});
       });
     } else if (url.match(/\/login\/device\/success/)) {
-      alert('fefiuhi')
+      // alert('fefiuhi')
       this.requestToken();
     }
   },
@@ -80,12 +80,44 @@ const localauth = {
   },
 
   finishAuth(token) {
-    api.storage.local.set({ [this.KEY]: token }, () => {
+
+    const AUTHENTICATION_URL = 'https://api.github.com/user';
+
+    fetch(AUTHENTICATION_URL, {
+      method: 'GET',
+      headers: {
+        'Authorization': `token ${token}`,
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      // alert(JSON.stringify(data))
+      const username = data.login;
       api.runtime.sendMessage({
-        type: 'auth_success',
-        token: token
+        auth: true,
+        token: token,
+        username: username
       });
+    })
+    .catch(error => {
+      alert(error)
+      console.error('Error:', error);
+      // Handle the error appropriately
     });
+
+
+    // api.storage.local.set({ [this.KEY]: token }, () => {
+    //   api.runtime.sendMessage({
+    //     type: 'auth_success',
+    //     token: token
+    //   });
+    // });
   }
 };
 

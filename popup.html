@@ -57,15 +57,52 @@
         <!-- Commit mode -->
         <div id="commit_mode" class="d-none">
           <p id="repo_url" class="h6"></p>
-          <p class="onboarding">Problems Solved: <span id="p_solved">0</span></p>
-          <p class="h6" style="padding: 10px;">
+          
+          
+<!-- 
+          <p class="onboarding" style="padding: 10px;">
+            
+            
+          </p>
+          <div class="container" style="text-align: center;">
+            
+          </div> -->
+
+          <div class="container" >
+            <div class="row">
+              <p style="font-size: large;"> Total Problems Solved: <span id="p_solved">0</span></p>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <b><span>Leetcode: </span></b>
+                <span id="leetcode_solved">0</span>
+              </div>
+              <div class="col-6">
+                <b><span>Geeksforgeeks: </span></b>
+                <span id="gfg_solved">0</span>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 10px; margin-top: 5px;">
+              <div class="col-12">
+                <b><span>Codeforce: </span></b>
+              <span id="cf_solved">0</span>
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- <p style="font-size: medium;">Leetcode: <span id="leetcode_solved">0</span></p>
+          <p style="font-size: medium;">Geeksforgeeks: <span id="gfg_solved">0</span></p>
+          <p style="font-size: medium;">Codeforce: <span id="cf_solved">0</span></p>
+          <p class="onboarding" style="padding: 10px;">
             <b><span style="color: #5cb85c">Easy:</span></b>
             <span id="p_solved_easy" class="text-muted">0 </span>
             <b><span  style="color: #f0ad4e">&ensp; &ensp; Medium:</span></b>
             <span id="p_solved_medium" class="text-muted">0 </span>
             <b><span style="color: #c51a14">&ensp; &ensp; Hard:</span></b>
             <span id="p_solved_hard" class="text-muted">0 </span>
-          </p>
+          </p> -->
           <button id="reset_stats" type="button" class="btn btn-dark btn-sm">Reset all stats</button>
           <div id="reset_confirmation" class="position-absolute d-none" style="top:200px; left:50%; width:500px; margin-left:-250px; border:1px solid blue; padding:20px; background-color:white;">
             <p>Are you sure you want to delete your stats?</p>
@@ -131,7 +168,7 @@
     </div>
   </div>
   <script src="scripts/oauth.js"></script>
-  <script type="text/javascript" src="scripts/popup.js"></script>
+  <script type="module" src="scripts/popup.js"></script>
     <script    src="scripts/bootstrap.bundle.min.js"></script>
 </body>
 
