@@ -40,7 +40,10 @@ const api = getBrowser();
  * @returns {string} - Returns a string representing the complete file path, either with or without the appended filename.
  */
 const getPath = (problem, filename) => {
-  return filename ? `${problem}/${filename}` : problem;
+  if (filename) {
+    return `leetcode/${problem}/${filename}`;
+  }
+  return `leetcode/${problem}`;
 };
 
 // https://web.archive.org/web/20190623091645/https://monsur.hossa.in/2012/07/20/utf-8-in-javascript.html
@@ -162,7 +165,7 @@ const setPersistentStats = async localStats => {
   ]);
 
   try {
-    return await upload(token, hook, pStatsEncoded, statsFilename, '', sha, updateStatsMsg);
+    return await upload(token, hook, pStatsEncoded, statsFilename, '',sha, updateStatsMsg);
   } catch (e) {
     if (e.message === '409') {
       // Stats were updated on GitHub since last submission
@@ -366,7 +369,7 @@ document.addEventListener('click', event => {
 
 function createRepoReadme() {
   const content = encode(defaultRepoReadme);
-  return uploadGitWith409Retry(content, readmeFilename, '', readmeMsg);
+  return uploadGitWith409Retry(content,readmeFilename,'',  readmeMsg);
 }
 
 async function updateReadmeTopicTagsWithProblem(topicTags, problemName) {
@@ -383,6 +386,7 @@ async function updateReadmeTopicTagsWithProblem(topicTags, problemName) {
 
   let readme;
   let newSha;
+  let flag = false;
 
   try {
     const { content, sha } = await getGitHubFile(
@@ -391,23 +395,31 @@ async function updateReadmeTopicTagsWithProblem(topicTags, problemName) {
       readmeFilename
     ).then(resp => resp.json());
     readme = content;
+    flag = true
     stats.shas[readmeFilename] = { '': sha };
     await api.storage.local.set({ stats });
   } catch (err) {
     if (err.message === '404') {
+      console.log('README not found. Creating a new one...');
       newSha = await createRepoReadme();
+      readme = defaultRepoReadme;
+    } else {
+      console.error('Error fetching README:', err);
+      throw err;
     }
-    throw err;
-  }
-  readme = decode(readme);
+    }
+   if(flag){
+     readme = decode(readme);
+   }
+   console.log(readme)
   for (let topic of topicTags) {
     readme = appendProblemToReadme(topic.name, readme, codehub_hook, problemName);
   }
   readme = sortTopicsInReadme(readme);
-  readme = encode(readme);
+    readme = encode(readme);
 
   return delay(
-    () => uploadGitWith409Retry(readme, readmeFilename, '', updateReadmeMsg, { sha: newSha }),
+    () => uploadGitWith409Retry(readme,  readmeFilename,'' ,updateReadmeMsg, { sha: newSha }),
     WAIT_FOR_GITHUB_API_TO_NOT_THROW_409_MS
   );
 }
