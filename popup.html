@@ -53,91 +53,50 @@
             Set up Hook
           </a>
         </div>
-  
+
         <!-- Commit mode -->
-        <div id="commit_mode" class="d-none">
-          <p id="repo_url" class="h6"></p>
-          
-          
-<!-- 
-          <p class="onboarding" style="padding: 10px;">
-            
-            
-          </p>
-          <div class="container" style="text-align: center;">
-            
-          </div> -->
+      <div id="commit_mode" class="d-none">
+        <b id="repo_url" class="h5"></b>
+        <hr>
+        <p class="font-weight-bold h5"> Total Problems Solved : <span  id="solved"> 0</span></p>
+        <p class="h5">Leetcode : <span id="leetcode_solved" class="">0</span></p>
+        <p >
+          <span style="color: #03ac03">Easy:</span>
+          <span id="leetcode_easy" class="text-muted">0</span>
+          <span style="color: #d07d09">Medium:</span>
+          <span id="leetcode_medium" class="text-muted">0</span>
+          <span  style="color: #dd0f08">Hard:</span>
+          <span id="leetcode_hard" class="text-muted">0</span>
+        </p>
+        <p class="h5"> Geeksforgeeks : <span id="gfg_solved"> 0</span> </p>
+        <p >
+          <span class="text-dark">School:</span>
+          <span id="gfg_school" class="text-muted">0</span>
+          <span class="text-dark">Basic:</span>
+          <span id="gfg_basic" class="text-muted">0</span>
+          <span class="text-dark">Easy:</span>
+          <span id="gfg_easy" class="text-muted">0</span>
+          <span class="text-dark ">Medium:</span>
+          <span id="gfg_medium" class="text-muted">0</span>
+          <span class="text-dark ">Hard:</span>
+          <span id="gfg_hard" class="text-muted">0</span>
+        </p>
+        <p class="h6">
 
-          <div class="container" >
-            <div class="row">
-              <p style="font-size: large;"> Total Problems Solved: <span id="p_solved">0</span></p>
+        </p>
+        <button id="reset_stats" type="button" class="btn btn-sm btn-dark">Reset all stats</button>
+        <div id="reset_confirmation" class="position-absolute d-none" style="top: 200px; left: 50%; width: 500px; margin-left: -250px;">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text">Are you sure you want to delete your stats?</p>
+              <button id="reset_yes" type="button" class="btn btn-danger mr-2">Yes</button>
+              <button id="reset_no" type="button" class="btn btn-secondary">No</button>
             </div>
-            <div class="row">
-              <div class="col-6">
-                <b><span>Leetcode: </span></b>
-                <span id="leetcode_solved">0</span>
-              </div>
-              <div class="col-6">
-                <b><span>Geeksforgeeks: </span></b>
-                <span id="gfg_solved">0</span>
-              </div>
-            </div>
-            <div class="row" style="margin-bottom: 10px; margin-top: 5px;">
-              <div class="col-12">
-                <b><span>Codeforce: </span></b>
-              <span id="cf_solved">0</span>
-              </div>
-            </div>
-
-          </div>
-
-
-          <!-- <p style="font-size: medium;">Leetcode: <span id="leetcode_solved">0</span></p>
-          <p style="font-size: medium;">Geeksforgeeks: <span id="gfg_solved">0</span></p>
-          <p style="font-size: medium;">Codeforce: <span id="cf_solved">0</span></p>
-          <p class="onboarding" style="padding: 10px;">
-            <b><span style="color: #5cb85c">Easy:</span></b>
-            <span id="p_solved_easy" class="text-muted">0 </span>
-            <b><span  style="color: #f0ad4e">&ensp; &ensp; Medium:</span></b>
-            <span id="p_solved_medium" class="text-muted">0 </span>
-            <b><span style="color: #c51a14">&ensp; &ensp; Hard:</span></b>
-            <span id="p_solved_hard" class="text-muted">0 </span>
-          </p> -->
-          <button id="reset_stats" type="button" class="btn btn-dark btn-sm">Reset all stats</button>
-          <div id="reset_confirmation" class="position-absolute d-none" style="top:200px; left:50%; width:500px; margin-left:-250px; border:1px solid blue; padding:20px; background-color:white;">
-            <p>Are you sure you want to delete your stats?</p>
-            <p>
-              <button id="reset_yes" type="button" class="btn btn-success btn-sm ">
-                Yes
-              </button>
-              <button id="reset_no" type="button" class="btn btn-danger btn-sm">
-                No
-              </button>
-            </p>
-          </div>
-  
-          <div class="h6" style="padding: 5px 0 0 0;">
-            <a
-              class="text-info"
-              target="_blank"
-              href="https://github.com/"
-              style="text-decoration:none;"
-              >Request a new feature!</a
-            >
-            | 
-            <a
-              id="welcome_URL"
-              class="text-info"
-              target="_blank"
-              href=""
-              style="text-decoration:none;"
-              >See Stats</a
-            >
-
           </div>
         </div>
       </div>
-  
+
+
       <!-- Generate Socials -->
       <div id="socials" class="col-12 text-center mt-3">
         <div class="social-icons-container">
