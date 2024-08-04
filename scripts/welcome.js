@@ -53,11 +53,20 @@ const createRepoDescription =
     try {
       const leetcodeStats = await fetchStats(codehub_token, codehub_hook, 'leetcode/stats.json');
       const gfgStats = await fetchStats(codehub_token, codehub_hook, 'geeksforgeeks/stats.json');
+      if(gfgStats == null){
+        api.storage.local.set({gfgstats: null})
+      }else{
+        api.storage.local.set({gfgstats: gfgStats.geeksforgeeks})
+      }
+      if(leetcodeStats == null){
+        api.storage.local.set({stats: null})
+      }else{
+        api.storage.local.set({stats: leetcodeStats.leetcode})
+      }
+  
   
       api.storage.local.set(
         { 
-          stats: leetcodeStats, 
-          gfgstats: gfgStats, 
           sync_stats: false 
         }, 
         () => console.log('Successfully synced local stats with GitHub stats')
@@ -183,7 +192,7 @@ const linkRepo = async (token, name) => {
 
     const data = await api.storage.local.get('sync_stats');
     const { stats, gfgstats } = data?.sync_stats ? await syncStats() : await api.storage.local.get(['stats', 'gfgstats']);
-    
+
     // Update LeetCode stats
     document.getElementById('leetcode_solved').textContent = stats?.solved ?? 0;
     document.getElementById('leetcode_easy').textContent = stats?.easy ?? 0;
