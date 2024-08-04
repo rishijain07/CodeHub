@@ -411,7 +411,6 @@ async function updateReadmeTopicTagsWithProblem(topicTags, problemName) {
    if(flag){
      readme = decode(readme);
    }
-   console.log(readme)
   for (let topic of topicTags) {
     readme = appendProblemToReadme(topic.name, readme, codehub_hook, problemName);
   }

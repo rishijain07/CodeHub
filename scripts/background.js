@@ -40,7 +40,6 @@ function handleMessage(request, sender, sendResponse) {
       { url: [{ hostSuffix: 'leetcode.com' }, { pathContains: 'submissions' }] }
     );
   }else if( request.type === 'getUserSolution'){
-    console.log('Solutionssssssssssssssssssssssss')
     chrome.scripting.executeScript({
       target: {tabId: sender.tab.id},
       files: ['scripts/extractCode.js'],

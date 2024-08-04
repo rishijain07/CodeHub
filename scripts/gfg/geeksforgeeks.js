@@ -64,9 +64,6 @@ const upload = async (token, hook, content, problem, filename, sha, message) => 
   }
 
   gfgstats.shas[problem][filename] = body.content.sha;
-  console.log('---------------')
-  console.log(gfgstats)
-  console.log(JSON.stringify(gfgstats))
   api.storage.local.set({ gfgstats });
 
   return body.content.sha;
@@ -92,10 +89,6 @@ const initializeStats = () => {
 
 const incrementStats = (difficulty, problem) => {
   return api.storage.local.get('gfgstats').then(({ gfgstats }) => {
-    console.log("hihihihi")
-    console.log(gfgstats)
-    console.log(JSON.stringify(gfgstats))
-    // console.log(typeof gfgstats.solved)
     gfgstats.solved += 1;
     gfgstats[difficulty.toLowerCase()] += 1;
     gfgstats.shas[problem].difficulty = difficulty.toLowerCase();
@@ -272,7 +265,6 @@ async function updateReadmeTopicTagsWithProblem(topicTags, problemName) {
   if (flag) {
     readme = decode(readme);
   }
-  console.log(readme);
   for (let topic of topicTags) {
     readme = appendProblemToReadme(topic.name, readme, codehub_hook, problemName);
   }
@@ -323,7 +315,6 @@ function loader(geeksForGeeks) {
       const filename = problemName + language;
 
       const uploadReadMe = await api.storage.local.get('gfgstats').then(({ stats }) => {
-        console.log(JSON.stringify(stats))
         const shaExists = stats?.shas?.[problemName]?.[readmeFilename] !== undefined;
 
         if (!shaExists) {
