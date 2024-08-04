@@ -13,50 +13,62 @@ const repositoryName = () => {
 const createRepoDescription =
   'A collection of  questions to ace the coding interview! - Created using [codehub](https://github.com/)';
 
-const syncStats = async () => {
-  let { codehub_hook, codehub_token, sync_stats, stats } = await api.storage.local.get([
-    'codehub_token',
-    'codehub_hook',
-    'sync_stats',
-    'stats',
-  ]);
-
-  if (sync_stats === false) {
-    console.log('Persistent stats already synced!');
-    return;
-  }
-
-  const URL = `https://api.github.com/repos/${codehub_hook}/contents/stats.json`;
-
-  let options = {
-    method: 'GET',
-    headers: {
-      Authorization: `token ${codehub_token}`,
-      Accept: 'application/vnd.github.v3+json',
-    },
+  const fetchStats = async (token, repo, path) => {
+    const URL = `https://api.github.com/repos/${repo}/contents/${path}`;
+    let options = {
+      method: 'GET',
+      headers: {
+        Authorization: `token ${token}`,
+        Accept: 'application/vnd.github.v3+json',
+      },
+    };
+  
+    try {
+      let resp = await fetch(URL, options);
+      if (!resp.ok && resp.status == 404) {
+        console.log(`No stats found at ${path}; starting fresh`);
+        return null;
+      }
+      let data = await resp.json();
+      let statsJson = decodeURIComponent(escape(atob(data.content)));
+      return JSON.parse(statsJson);
+    } catch (error) {
+      console.error(`Error fetching stats from ${path}:`, error);
+      return null;
+    }
   };
-
-  try {
-    let resp = await fetch(URL, options);
-    if (!resp.ok && resp.status == 404) {
-      await api.storage.local.set({ sync_stats: false });
-      console.log('No stats found; starting fresh');
+  
+  const syncStats = async () => {
+    let { codehub_hook, codehub_token, sync_stats } = await api.storage.local.get([
+      'codehub_token',
+      'codehub_hook',
+      'sync_stats',
+    ]);
+  
+    if (sync_stats === false) {
+      console.log('Persistent stats already synced!');
+      return;
+    }
+  
+    try {
+      const leetcodeStats = await fetchStats(codehub_token, codehub_hook, 'leetcode/stats.json');
+      const gfgStats = await fetchStats(codehub_token, codehub_hook, 'geeksforgeeks/stats.json');
+  
+      api.storage.local.set(
+        { 
+          stats: leetcodeStats, 
+          gfgstats: gfgStats, 
+          sync_stats: false 
+        }, 
+        () => console.log('Successfully synced local stats with GitHub stats')
+      );
+  
+      return { stats: leetcodeStats, gfgstats: gfgStats };
+    } catch (error) {
+      console.error('Error syncing stats:', error);
       return {};
     }
-    let data = await resp.json();
-    let pStatsJson = decodeURIComponent(escape(atob(data.content)));
-    let pStats = await JSON.parse(pStatsJson);
-
-    api.storage.local.set({ stats: pStats.leetcode, sync_stats: false }, () =>
-      console.log(`Successfully synced local stats with GitHub stats`)
-    );
-
-    return { stats: pStats.leetcode };
-  } catch (error) {
-    console.error('Error syncing stats:', error);
-    return {};
-  }
-};
+  };
 
 const getCreateErrorString = (statusCode, name) => {
   const errorStrings = {
@@ -170,11 +182,25 @@ const linkRepo = async (token, name) => {
     );
 
     const data = await api.storage.local.get('sync_stats');
-    const stats = data?.sync_stats ? await syncStats() : await api.storage.local.get('stats');
-    document.getElementById('p_solved').textContent = stats?.stats?.solved ?? 0;
-    document.getElementById('p_solved_easy').textContent = stats?.stats?.easy ?? 0;
-    document.getElementById('p_solved_medium').textContent = stats?.stats?.medium ?? 0;
-    document.getElementById('p_solved_hard').textContent = stats?.stats?.hard ?? 0;
+    const { stats, gfgstats } = data?.sync_stats ? await syncStats() : await api.storage.local.get(['stats', 'gfgstats']);
+    
+    // Update LeetCode stats
+    document.getElementById('leetcode_solved').textContent = stats?.solved ?? 0;
+    document.getElementById('leetcode_easy').textContent = stats?.easy ?? 0;
+    document.getElementById('leetcode_medium').textContent = stats?.medium ?? 0;
+    document.getElementById('leetcode_hard').textContent = stats?.hard ?? 0;
+
+    // Update GeeksforGeeks stats
+    document.getElementById('gfg_solved').textContent = gfgstats?.solved ?? 0;
+    document.getElementById('gfg_school').textContent = gfgstats?.school ?? 0;
+    document.getElementById('gfg_basic').textContent = gfgstats?.basic ?? 0;
+    document.getElementById('gfg_easy').textContent = gfgstats?.easy ?? 0;
+    document.getElementById('gfg_medium').textContent = gfgstats?.medium ?? 0;
+    document.getElementById('gfg_hard').textContent = gfgstats?.hard ?? 0;
+
+    // Update total solved problems
+    const totalSolved = (stats?.solved ?? 0) + (gfgstats?.solved ?? 0);
+    document.getElementById('solved').textContent = totalSolved;
 
     document.getElementById('hook_mode').classList.add('d-none');
     document.getElementById('commit_mode').classList.remove('d-none');
