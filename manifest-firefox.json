@@ -13,7 +13,11 @@
   "background": {
     "scripts": ["scripts/background.js"]
   },
-  "permissions": ["unlimitedStorage", "storage", "webNavigation"],
+  "permissions": ["unlimitedStorage", "storage", "webNavigation","scripting"],
+  "web_accessible_resources": [{
+        "resources": ["scripts/extractCode.js","scripts/nodeDeletion.js"],
+        "matches": ["https://practice.geeksforgeeks.org/*","https://www.geeksforgeeks.org/*"]
+      }],
   "content_scripts": [
     {
       "matches": ["https://leetcode.com/*"],
@@ -25,8 +29,9 @@
       "js": ["scripts/authorize.js"]
     },
     {
-      "matches": ["https://practice.geeksforgeeks.org/*"],
-      "js": ["scripts/gfg.js"]
+      "matches": ["https://practice.geeksforgeeks.org/*",
+            "https://www.geeksforgeeks.org/*"],
+      "js": ["scripts/geeksforgeeks.js"]
     }
   ],
   "content_security_policy": {

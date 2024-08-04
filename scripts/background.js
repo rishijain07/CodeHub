@@ -39,6 +39,21 @@ function handleMessage(request, sender, sendResponse) {
       }),
       { url: [{ hostSuffix: 'leetcode.com' }, { pathContains: 'submissions' }] }
     );
+  }else if( request.type === 'getUserSolution'){
+    console.log('Solutionssssssssssssssssssssssss')
+    chrome.scripting.executeScript({
+      target: {tabId: sender.tab.id},
+      files: ['scripts/extractCode.js'],
+      world: 'MAIN',
+    });
+    sendResponse({status: true});
+  }else  if ( request.type == 'deleteNode' ) {
+    chrome.scripting.executeScript({
+      target: {tabId: sender.tab.id},
+      files: ['scripts/nodeDeletion.js'],
+      world: 'MAIN',
+    });
+    sendResponse({status: true});
   }
   return true;
 }
