@@ -19,7 +19,7 @@ const updateStatsMsg = 'Updated stats';
 const discussionMsg = 'Prepend discussion post - CodeHub';
 const createNotesMsg = 'Attach NOTES - CodeHub';
 const defaultRepoReadme =
-  'A collection of LeetCode questions to ace the coding interview! - Created using [CodeHub](https://github.com/)';
+  'A collection of LeetCode questions to ace the coding interview! - Created using [CodeHub](https://github.com/rishijain07/CodeHub)';
 const readmeFilename = 'README.md';
 const statsFilename = 'stats.json';
 
@@ -368,7 +368,8 @@ document.addEventListener('click', event => {
 });
 
 function createRepoReadme() {
-  const content = encode(defaultRepoReadme);
+  let markdown = '# CodeHub \n' +  defaultRepoReadme
+  const content = encode(markdown);
   return uploadGitWith409Retry(content,readmeFilename,'',  readmeMsg);
 }
 

@@ -5,6 +5,7 @@ import {
   isEmptyObject,
   CodeHubError,
   mergeStats,
+  getBrowser,
 } from './utils.js';
 import { appendProblemToReadme, sortTopicsInReadme } from './readmeTopics.js';
 
@@ -13,13 +14,13 @@ const updateReadmeMsg = 'Update README - Topic Tags';
 const updateStatsMsg = 'Updated stats';
 const createNotesMsg = 'Attach NOTES - CodeHub';
 const defaultRepoReadme =
-  'A collection of GeeksForGeeks questions to ace the coding interview! - Created using [CodeHub](https://github.com/)';
+  'A collection of GeeksForGeeks questions to ace the coding interview! - Created using [CodeHub](https://github.com/rishijain07/CodeHub)';
 const readmeFilename = 'README.md';
 const statsFilename = 'stats.json';
 
 const WAIT_FOR_GITHUB_API_TO_NOT_THROW_409_MS = 500;
 
-const api = chrome;
+const api = getBrowser();
 
 const getPath = (problem, filename) => {
   if (filename) {

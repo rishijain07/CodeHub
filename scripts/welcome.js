@@ -11,7 +11,7 @@ const repositoryName = () => {
 };
 
 const createRepoDescription =
-  'A collection of  questions to ace the coding interview! - Created using [codehub](https://github.com/)';
+  'A collection of  questions to ace the coding interview! - Created using [CodeHub](https://github.com/rishijain07/CodeHub)';
 
   const fetchStats = async (token, repo, path) => {
     const URL = `https://api.github.com/repos/${repo}/contents/${path}`;
@@ -125,7 +125,7 @@ const createRepo = async (token, name) => {
     await api.storage.local.remove('stats');
     document.getElementById('error').classList.add('d-none');
     document.getElementById('success').innerHTML =
-      `Successfully created <a target="blank" href="${res.html_url}">${name}</a>. Start <a href="http://leetcode.com">LeetCoding</a>!`;
+      `Successfully created <a target="blank" href="${res.html_url}">${name}</a>. Start Coding!`;
     document.getElementById('success').classList.remove('d-none');
     document.getElementById('unlink').classList.remove('d-none');
     document.getElementById('hook_mode').classList.add('d-none');
