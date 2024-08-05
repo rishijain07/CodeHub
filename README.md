@@ -1,3 +1,18 @@
+
+<h1 align="center">
+<img src="assets/logo128.png" > <br>
+    <a href="https://github.com/rishijain07/CodeHub/">CodeHub</a> 
+</h1>
+<h3 align="center">Automatically sync your Leetcode and GeeksForGeeks submission to GitHub.</h3>
+
+
+<p align="center">
+  <a href="https://github.com/rishijain07/CodeHub/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license"/>
+  </a>
+</p>
+
+
 ## What is CodeHub?
 
 A extension that automatically pushes your code to GitHub when you pass all tests on a [Leetcode](https://leetcode.com/) problem and [GeeksForGeeks](https://geeksforgeeks.org/explore). It's forked from the original [LeetHub V2](https://chromewebstore.google.com/detail/leethub-v2/mhanfgfagplhgemhjfeolkkdidbakocm) and improves on it to be faster, cleaner, and compatible with the old and new dynamic LeetCode UI and GeeksForGeeks UI.
