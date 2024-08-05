@@ -2,13 +2,18 @@
   "manifest_version": 3,
   "name": "CodeHub",
   "description": "Automatically integrate your Leetcode & GeeksforGeeks submissions to GitHub",
-  "homepage_url": "https://github.com/",
+  "homepage_url": "https://github.com/rishijain07/CodeHub",
   "version": "__CH_VERSION__",
-  "author": "RIshi P Jain",
+  "author": "Rishi Jain",
   "action": {
-    "default_icon": "assets/thumbnail.png",
+    "default_icon": "assets/logo128.png",
     "default_popup": "popup.html",
     "default_title": "Upload your solutions to GitHub"
+  },
+  "icons": {
+    "16": "assets/logo128.png",
+    "48": "assets/logo128.png",
+    "128": "assets/logo128.png"
   },
   "background": {
     "scripts": ["scripts/background.js"]

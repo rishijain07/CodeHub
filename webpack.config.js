@@ -93,6 +93,14 @@ export default {
           },
         },
         {
+          from: './assets',
+          to: './chrome/assets',
+        },
+        {
+          from: './assets',
+          to: './firefox/assets',
+        },
+        {
           from: './manifest-chrome.json',
           to: './manifest.json',
           transform: manifestTransform,
