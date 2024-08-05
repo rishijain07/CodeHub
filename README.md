@@ -16,17 +16,31 @@ Moreover, pushing code manually to GitHub from these platform is very time-consu
 It's as simple as:
 
 1. After installation, launch CodeHub.
-2. Click on the "authorize with GitHub" button to automatically set up your account with CodeHub.
-3. Set up an existing/new repository with CodeHub (private by default) by clicking the "Get Started" button.
-4. Begin Coding! To view your progress, simply click on the extension!
+2. Click on the "Authenticate with GitHub" button to automatically set up your account with CodeHub.
+3. Copy the displayed code and enter that on proceeded URI
+4. Set up an existing/new repository with CodeHub (private by default) by clicking the "Get Started" button.
+5. Begin Coding! To view your progress, simply click on the extension!
 
 **BONUS:** Star [this repository](https://github.com/rishijain07/CodeHub) for further development of features. If you want a particular feature, simply [request](https://github.com/rishijain07/CodeHub/labels/enhancement) for it!
 
-## Why did I decide to work on CodeHub?
-
-After completing my final year of undergrad, I dedicated time to practicing DSA algorithms on LeetCode and GeeksforGeeks. While using the LeetHub extension to track my progress, I found it couldn't consolidate my progress across both platforms. So, I deicded  to develop my own solution, which not only allowed me to track my progress on multiple platforms but also helped me revise my web development skills and prepare more effectively for coding interviews.
-
 Let's see you ACE that coding interview!
+
+## Snippets of Extension
+
+<div style="display: flex; justify-content: space-between;">
+    <img src="assets/popup-auth.png" alt="Popup View" style="width: 48%;">
+    <img src="assets/device-code.png" alt="Device Code" style="width: 48%;">
+</div>
+
+<div style="display: flex; justify-content: space-between; margin-top: 10px;">
+    <img src="assets/auth.png" alt="Auth Page" style="width: 48%;">
+    <img src="assets/welcome.png" alt="Welcome Page" style="width: 48%;">
+</div>
+
+<div style="display: flex; justify-content: space-between; margin-top: 10px;">
+    <img src="assets/stats.png" alt="Stats" style="width: 48%;">
+    <img src="assets/stats-popup.png" alt="Popup Stats" style="width: 48%;">
+</div>
 
 
 ## How to set up CodeHub for local development?
