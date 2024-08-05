@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const entries = ['leetcode', 'geeksforgeeks', 'welcome'];
-const extensionVersion = process.env.npm_package_version;
+const extensionVersion = process.env.npm_package_version; 
 
 // Ignore when copying
 const ignore = [
@@ -27,6 +27,7 @@ const ignore = [
   '**/scripts/popup.js',
   '**/manifest-chrome.json',
   '**/manifest-firefox.json',
+  '**/LICENSE'
 ];
 
 const folderIgnore = [
@@ -151,6 +152,14 @@ export default {
                 ignore: folderIgnore,
               },
             },
+          ],
+          delete: [
+            './dist/manifest.json',
+            './dist/css',
+            './dist/scripts',
+            './dist/css',
+            './dist/popup.html',
+            './dist/welcome.html'
           ],
         },
       },

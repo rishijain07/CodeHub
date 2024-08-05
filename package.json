@@ -1,21 +1,16 @@
 {
-  "name": "codehub",
+  "name": "CodeHub",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
     "dev": "webpack --mode=production --watch",
     "setup": "npm i",
-    "format": "prettier --write **/*.{js,jsx,ts,tsx,css,html}",
-    "format-test": "prettier --check **/*.{js,jsx,ts,tsx,css,html}",
-    "lint": "eslint **/*.{js,ts} --fix",
-    "lint-test": "eslint **/*.{js,ts} --color",
-    "build": "webpack --mode=production",
-    "test": "jasmine"
+    "build": "webpack --mode=production"
   },
   "keywords": [],
-  "author": "",
+  "author": "Rishi Jain",
   "license": "ISC",
-  "description": "",
+  "description": "Automatically push the Leetcode and GeeksforGeeks solutions to GitHub",
   "devDependencies": {
     "@types/firefox-webext-browser": "^120.0.4",
     "chrome-types": "^0.1.296",
